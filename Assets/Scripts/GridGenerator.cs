@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
-{
-
-    public GameObject grid;
+{   public GameObject grid;
 
     [SerializeField]
     private MultiDimensionalInt[] gridBuilder;
     // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
+    void Start(){}
 
     public void BuildGrid() {
         foreach (var item in GameObject.FindGameObjectsWithTag("Cube")) {
@@ -33,11 +27,7 @@ public class GridGenerator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    void Update(){}
 
     [System.Serializable]
     public class MultiDimensionalInt
