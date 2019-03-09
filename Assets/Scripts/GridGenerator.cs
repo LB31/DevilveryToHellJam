@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
+
+    public GameObject grid;
+
     [SerializeField]
-    private MultiDimensionalInt[] grid;
+    private MultiDimensionalInt[] gridBuilder;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +21,13 @@ public class GridGenerator : MonoBehaviour
             DestroyImmediate(item);
         }
 
-        for (int i = 0; i < grid.Length; i++) {
+        for (int i = 0; i < gridBuilder.Length; i++) {
 
-            for (int k = grid[i].startPosition; k < grid[i].amountCubes + grid[i].startPosition; k++) {
+            for (int k = gridBuilder[i].startPosition; k < gridBuilder[i].amountCubes + gridBuilder[i].startPosition; k++) {
                 GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 cube.transform.position = new Vector3(k, 0f, i);
                 cube.tag = "Cube";
+                cube.transform.parent = grid.transform;
             }
         }
     }
