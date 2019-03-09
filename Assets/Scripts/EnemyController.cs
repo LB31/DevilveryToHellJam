@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
 
 
-
+    public GameObject AttackParticles;
 
     // Path finding
     public Transform goal;
@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
 
     private bool CrashedPlayer;
-    private float t;
+
 
     private void Start() {
 
@@ -30,8 +30,24 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Update() {
-
+        transform.LookAt(goal);
+        if (Vector3.Distance(transform.position, goal.position) < 1.1 && !CrashedPlayer) {
+            agent.isStopped = true;
+            CrashedPlayer = true;
+            Attack();
+            
+        }
      
+    }
+
+    private void Attack() {
+        GameObject particles = Instantiate(AttackParticles, transform.position + (transform.forward * 0.5f) + new Vector3(0, 0.5f, 0), transform.rotation);
+        StartCoroutine(WaitBeforeDestory(particles));
+    }
+
+    IEnumerator WaitBeforeDestory(GameObject particles) {
+        yield return new WaitForSeconds(1f);
+        Destroy(particles);
     }
 
 
