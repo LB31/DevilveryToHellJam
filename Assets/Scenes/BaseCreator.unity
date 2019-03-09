@@ -322,6 +322,8 @@ MonoBehaviour:
     startPosition: 2
   - amountCubes: 1
     startPosition: 4
+  - amountCubes: 10
+    startPosition: 2
 --- !u!4 &967913053
 Transform:
   m_ObjectHideFlags: 0
